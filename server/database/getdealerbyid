@@ -1,0 +1,2 @@
+curl -X GET "http://127.0.0.1:3030/fetchDealer/29"
+[{"_id":"6ab4b746eed6ebfd272da4ce","id":29,"city":"San Francisco","state":"California","address":"9 Harper Circle","zip":"94110","lat":"37.7509","long":"-122.4153","short_name":"Fix San","full_name":"Fix San Car Dealership","__v":0}]

@@ -10,6 +10,12 @@ urlpatterns = [
     path('logout', views.logout_user, name='logout'),
 
     path(
+        'get_cars',
+        views.get_cars,
+        name='getcars'
+    ),
+
+    path(
         'get_dealers',
         views.get_dealerships,
         name='get_dealers'
