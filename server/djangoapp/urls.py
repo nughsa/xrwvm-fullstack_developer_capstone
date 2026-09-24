@@ -10,8 +10,26 @@ urlpatterns = [
     path('logout', views.logout_user, name='logout'),
 
     path(
+        'get_dealers',
+        views.get_dealerships,
+        name='get_dealers'
+    ),
+
+    path(
+        'get_dealers/<str:state>',
+        views.get_dealerships,
+        name='get_dealers_by_state'
+    ),
+
+    path(
         'reviews/dealer/<int:dealer_id>',
         views.get_dealer_reviews,
         name='dealer_details'
+    ),
+
+    path(
+        'dealer/<int:dealer_id>',
+        views.get_dealer_details,
+        name='dealer_details_by_id'
     ),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
