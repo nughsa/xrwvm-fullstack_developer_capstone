@@ -145,5 +145,34 @@ def get_cars(request):
 
 
 # Create a `add_review` view to submit a review
-# def add_review(request):
-# ...
+@csrf_exempt
+def add_review(request):
+    # Only authenticated users can submit reviews
+    if request.user.is_anonymous:
+        return JsonResponse({
+            "error": "Unauthorized"
+        }, status=401)
+
+    # Only accept POST requests
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body)
+
+            # Send review data to the backend API
+            response = post_review(data)
+
+            return JsonResponse({
+                "status": 200
+            })
+
+        except Exception as err:
+            print(f"Unexpected {err=}, {type(err)=}")
+            return JsonResponse({
+                "status": 500,
+                "message": "Failed to submit review"
+            }, status=500)
+
+    return JsonResponse({
+        "status": 400,
+        "message": "Bad Request"
+    }, status=400)
